@@ -1,0 +1,93 @@
+<html lang = "en">
+<head>
+	<meta charset = "UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie-edge">
+	<title> converter </title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+  <div class ="container">
+  	<div class="heading">
+  	<h1>Currency Converter</h1>
+  	<p1> The currency converter will help u to convert  all currencies in real time
+  	</p1>
+  </div>
+  	<div class ="currencyInput">
+  		<input id="bdt" type="number" placeholder="BDT">
+  		<input id="rs" type="number" placeholder="INDIAN RUPEE">
+  		<input id="euro" type="number" placeholder="EURO">
+  		<input id="dollar" type="number" placeholder="US DOLLAR">
+  	</div>
+  </div>
+
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+  <script type="text/javascript">
+
+
+const bdt = document.getElementById('bdt');
+const rs = document.getElementById('rs');
+const euro = document.getElementById('euro');
+const dollar = document.getElementById('dollar');
+
+euro.addEventListener('input',euroToDolarToBdtToRs);
+function euroToDolarToBdtToRs(){
+const eu = parseInt(euro.value);
+const dl = 1.11*eu;
+const irs = eu*76.76;
+const bt = eu*94.25;
+dollar.value =dl;
+rs.value=irs;
+bdt.value=bt;
+}
+
+
+euroToDolarToBdtToRs();
+
+
+dollar.addEventListener('input',DolarToeuroToBdtToRs);
+function DolarToeuroToBdtToRs(){
+const dl = parseInt(dollar.value);
+const eu = 0.90*dl;
+const irs = dl*68.86;
+const bt = dl*94.25;
+euro.value =eu;
+rs.value=irs;
+bdt.value=bt;
+}
+
+DolarToeuroToBdtToRs();
+
+
+rs.addEventListener('input',RsToeuroToBdtToDolar);
+function RsToeuroToBdtToDolar(){
+const irs = parseInt(rs.value);
+const eu = 76.09*irs;
+const dl = irs*68.86;
+const bt = irs*1.19;
+euro.value =eu;
+dollar.value=dl;
+bdt.value=bt;
+}
+
+ RsToeuroToBdtToDolar();
+
+
+bdt.addEventListener('input',BdtToeuroToRsToDolar);
+function BdtToeuroToRsToDolar(){
+const bt = parseInt(bdt.value);
+const eu = 76.09*bt;
+const dl = bt*68.86;
+const irs = bt*0.20;
+euro.value =eu;
+dollar.value=dl;
+rs.value=irs;
+
+}
+
+BdtToeuroToRsToDolar();
+
+</script>
+	
+</body>
+</html>
